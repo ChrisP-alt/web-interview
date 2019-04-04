@@ -11,17 +11,12 @@ class App extends Component {
 
     this.state = {
       userId: 1,
-      selectedAppointmentType: 'gp',
+      selectedConsultantType: 'gp',
       availableSlots: [],
     }
   }
 
   componentDidMount() {
-    document
-      .querySelectorAll('button')
-      .querySelectorAll('[id=GP-button]')
-      .attachEventHandler('click', this.onClick)
-
     fetch(`${API_ENDPOINT}/availableSlots`)
       .then(res => res.json())
       .then(json => {
@@ -30,10 +25,6 @@ class App extends Component {
       .catch(() => {
         // TODO: Handle error here
       })
-  }
-
-  onClick() {
-    this.setState({ selectedAppointmentType: 'gp' })
   }
 
   render() {
@@ -46,28 +37,33 @@ class App extends Component {
         j++
       ) {
         if (
-          this.state.availableSlots[j]['consultantType'][i] ===
-          this.state.selectedAppointmentType
+          this.state.availableSlots[i]['consultantType'][j] ===
+          this.state.selectedConsultantType
         ) {
-          slots.push(this.state.availableSlots[j])
+          slots.push(this.state.availableSlots[i])
         }
       }
     }
 
     return (
       <div className="app">
-        <h2 className="h6">New appointment</h2>
         <div className="app-header">
           <img src={logo} className="app-logo" alt="Babylon Health" />
         </div>
+        <h2>New Appointment</h2>
         <div style={{ maxWidth: 600, margin: '24px auto' }}>
-          <div className="button" id="GP-button">
+          <div
+            className="button"
+            onClick={e => {
+              this.setState({ selectedConsultantType: 'gp' })
+            }}
+          >
             GP
           </div>
           <div
             className="button"
             onClick={e => {
-              this.setState({ selectedAppointmentType: 'Therapist' })
+              this.setState({ selectedConsultantType: 'therapist' })
             }}
           >
             Therapist
@@ -75,7 +71,7 @@ class App extends Component {
           <div
             className="button"
             onClick={e => {
-              this.setState({ selectedAppointmentType: 'Physio' })
+              this.setState({ selectedConsultantType: 'physio' })
             }}
           >
             Physio
@@ -83,16 +79,17 @@ class App extends Component {
           <div
             className="button"
             onClick={e => {
-              this.setState({ selectedAppointmentType: 'specialist' })
+              this.setState({ selectedConsultantType: 'specialist' })
             }}
           >
             Specialist
           </div>
           <div>
-            <strong>Appointments</strong>
+            <strong>Date & Time</strong>
             {slots.map(slot => (
               <li
                 className="appointment-button"
+                key={slot.id}
                 onClick={() => {
                   this.setState({ selectedAppointment: slot })
                 }}
@@ -112,7 +109,7 @@ class App extends Component {
                 /* TODO: submit the data */
               }}
             >
-              Book appointment
+              Book
             </div>
           </div>
         </div>

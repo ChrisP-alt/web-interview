@@ -10,6 +10,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "precommit": "lint-staged",
+    "server-react": "react-scripts start",
     "server": "yarn json-server --watch ./data/data.json --port 3010"
   },
   "lint-staged": {
