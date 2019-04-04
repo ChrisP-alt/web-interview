@@ -5,7 +5,8 @@ import User from './components/User'
 import ConsultantSection from './components/ConsultantSection'
 import DateTimeSection from './components/DateTimeSection'
 import NotesSection from './components/NotesSection'
-import { getUser, getAvailableSlots } from './api/apiUtils'
+import SubmitButton from './components/SubmitButton'
+import { getUser, getAvailableSlots, postAppointment } from './api/apiUtils'
 
 import logo from './logo.png'
 
@@ -26,6 +27,7 @@ class App extends Component {
     this.selectConsultantType = this.selectConsultantType.bind(this)
     this.selectAppointment = this.selectAppointment.bind(this)
     this.handleNotesChange = this.handleNotesChange.bind(this)
+    this.submitSelectedAppointment = this.submitSelectedAppointment.bind(this)
   }
 
   componentDidMount() {
@@ -71,6 +73,36 @@ class App extends Component {
     this.setState({ notes: event.target.value })
   }
 
+  submitSelectedAppointment() {
+    const {
+      notes,
+      selectedAppointment,
+      selectedConsultantType,
+      userId,
+    } = this.state
+    if (!selectedAppointment) {
+      // TODO: Handle error here
+      return
+    }
+    postAppointment({
+      dateTime: selectedAppointment.time,
+      notes,
+      type: selectedConsultantType,
+      userId,
+    })
+      .then(response => {
+        // TODO: show success message
+        this.setState({
+          selectedConsultantType: 'gp',
+          selectedAppointment: null,
+          notes: '',
+        })
+      })
+      .catch(() => {
+        // TODO: Handle error here
+      })
+  }
+
   getFilteredSlots() {
     const { availableSlots, selectedConsultantType } = this.state
     return availableSlots.filter(availableSlot =>
@@ -108,16 +140,7 @@ class App extends Component {
             handleNotesChange={this.handleNotesChange}
             notes={notes}
           />
-          <div>
-            <div
-              className="button"
-              onClick={() => {
-                /* TODO: submit the data */
-              }}
-            >
-              Book
-            </div>
-          </div>
+          <SubmitButton onClick={this.submitSelectedAppointment} />
         </div>
       </div>
     )

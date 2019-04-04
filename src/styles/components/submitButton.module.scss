@@ -1,0 +1,9 @@
+@import '../mixins';
+
+.button {
+  @include button-primary-selected;
+
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  width: 100%;
+}
