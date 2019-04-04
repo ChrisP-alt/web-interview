@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import Title from './components/Title'
 import ConsultantSection from './components/ConsultantSection'
 import NotesSection from './components/NotesSection'
 
@@ -64,8 +65,8 @@ class App extends Component {
         <div className="app-header">
           <img src={logo} className="app-logo" alt="Babylon Health" />
         </div>
-        <h2>New Appointment</h2>
         <div style={{ maxWidth: 600, margin: '24px auto' }}>
+          <Title />
           <ConsultantSection selectConsultantType={this.selectConsultantType} />
           <div>
             <strong>Date & Time</strong>
