@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import ConsultantSection from './components/ConsultantSection'
+
 import logo from './logo.png'
 import { API_ENDPOINT } from './config'
 
@@ -14,6 +16,7 @@ class App extends Component {
       selectedConsultantType: 'gp',
       availableSlots: [],
     }
+    this.selectConsultantType = this.selectConsultantType.bind(this)
   }
 
   componentDidMount() {
@@ -25,6 +28,10 @@ class App extends Component {
       .catch(() => {
         // TODO: Handle error here
       })
+  }
+
+  selectConsultantType(type) {
+    this.setState({ selectedConsultantType: type })
   }
 
   render() {
@@ -52,38 +59,7 @@ class App extends Component {
         </div>
         <h2>New Appointment</h2>
         <div style={{ maxWidth: 600, margin: '24px auto' }}>
-          <div
-            className="button"
-            onClick={e => {
-              this.setState({ selectedConsultantType: 'gp' })
-            }}
-          >
-            GP
-          </div>
-          <div
-            className="button"
-            onClick={e => {
-              this.setState({ selectedConsultantType: 'therapist' })
-            }}
-          >
-            Therapist
-          </div>
-          <div
-            className="button"
-            onClick={e => {
-              this.setState({ selectedConsultantType: 'physio' })
-            }}
-          >
-            Physio
-          </div>
-          <div
-            className="button"
-            onClick={e => {
-              this.setState({ selectedConsultantType: 'specialist' })
-            }}
-          >
-            Specialist
-          </div>
+          <ConsultantSection selectConsultantType={this.selectConsultantType} />
           <div>
             <strong>Date & Time</strong>
             {slots.map(slot => (
