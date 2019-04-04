@@ -1,0 +1,24 @@
+@import '../../constants.scss';
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.75rem;
+}
+
+.userDetails {
+  align-items: center;
+  display: flex;
+
+  img {
+    height: 60px;
+    margin-right: 1rem;
+    width: 60px;
+  }
+}
+
+.change {
+  color: $positive;
+  text-decoration: none;
+}
