@@ -5,12 +5,19 @@ import Section from './Section'
 import { ConsultantTypes } from '../constants/Appointments'
 import { ReactComponent as Icon } from '../icons/stethoscope-solid.svg'
 
-const ConsultantSection = ({ selectConsultantType }) => {
+import styles from '../styles/components/consultantType.module.scss'
+
+const ConsultantSection = ({
+  selectConsultantType,
+  selectedConsultantType,
+}) => {
   const buttons = Object.keys(ConsultantTypes).map(type => {
     const text = ConsultantTypes[type]
+    const isSelected = selectedConsultantType === type
+    const buttonClass = isSelected ? styles.buttonSelected : styles.button
     return (
       <button
-        className="button"
+        className={buttonClass}
         key={type}
         onClick={() => selectConsultantType(type)}
         type="button"
@@ -29,6 +36,7 @@ const ConsultantSection = ({ selectConsultantType }) => {
 
 ConsultantSection.propTypes = {
   selectConsultantType: PropTypes.func.isRequired,
+  selectedConsultantType: PropTypes.string.isRequired,
 }
 
 export default ConsultantSection

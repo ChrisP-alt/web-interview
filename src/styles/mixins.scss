@@ -1,0 +1,30 @@
+@import './constants.scss';
+
+@mixin button-reset {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+@mixin button-primary {
+  @include button-reset;
+
+  background-color: white;
+  border: $border-standard;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  color: $secondary-dark;
+  margin-right: 12px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+@mixin button-primary-selected {
+  @include button-primary;
+
+  background-color: $positive;
+  color: $secondary-light;
+}

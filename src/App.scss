@@ -1,4 +1,4 @@
-@import './constants.scss';
+@import './styles/constants.scss';
 
 body {
   font-family: sans-serif;
@@ -12,15 +12,4 @@ body {
   }
 
   border-bottom: $border-standard;
-}
-
-.button {
-  box-sizing: border-box;
-  padding: 12px;
-  background-color: $primary-dark;
-  color: $secondary-light;
-  height: 42px;
-  margin-right: 12px;
-  display: inline-block;
-  text-align: center;
 }

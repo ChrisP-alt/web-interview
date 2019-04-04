@@ -1,16 +1,11 @@
 @import '../mixins';
 
-.wrapper {
-  display: flex;
-  flex-wrap: wrap;
-};
-
 .button {
   @include button-primary;
 
   flex-shrink: 0;
   margin-bottom: 0.5rem;
-  width: 7.25rem;
+  padding: 0.5rem 1rem;
 }
 
 .buttonSelected {
@@ -18,5 +13,5 @@
 
   flex-shrink: 0;
   margin-bottom: 0.5rem;
-  width: 7.25rem;
+  padding: 0.5rem 1rem;
 }

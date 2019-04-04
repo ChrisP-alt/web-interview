@@ -80,6 +80,12 @@ class App extends Component {
 
   render() {
     const slots = this.getFilteredSlots()
+    const {
+      notes,
+      selectedAppointment,
+      selectedConsultantType,
+      user,
+    } = this.state
 
     return (
       <div className="app">
@@ -88,15 +94,19 @@ class App extends Component {
         </div>
         <div style={{ maxWidth: 600, margin: '24px auto' }}>
           <Title />
-          <User user={this.state.user} />
-          <ConsultantSection selectConsultantType={this.selectConsultantType} />
+          <User user={user} />
+          <ConsultantSection
+            selectConsultantType={this.selectConsultantType}
+            selectedConsultantType={selectedConsultantType}
+          />
           <DateTimeSection
             appointments={slots}
             selectAppointment={this.selectAppointment}
+            selectedAppointment={selectedAppointment}
           />
           <NotesSection
             handleNotesChange={this.handleNotesChange}
-            notes={this.state.notes}
+            notes={notes}
           />
           <div>
             <div
