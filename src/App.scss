@@ -1,5 +1,9 @@
 @import './constants.scss';
 
+body {
+  font-family: sans-serif;
+}
+
 .app-header {
   padding: $gutter-size--large;
 

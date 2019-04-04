@@ -1,0 +1,20 @@
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  svg {
+    height: 1.25rem;
+    margin-right: 1.25rem;
+    width: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+.content {
+  margin: 1.25rem 0 2rem 2rem;
+}

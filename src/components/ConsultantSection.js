@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Section from './Section'
 import { ConsultantTypes } from '../constants/Appointments'
+import { ReactComponent as Icon } from '../icons/stethoscope-solid.svg'
 
 const ConsultantSection = ({ selectConsultantType }) => {
   const buttons = Object.keys(ConsultantTypes).map(type => {
@@ -18,7 +20,11 @@ const ConsultantSection = ({ selectConsultantType }) => {
     )
   })
 
-  return <div>{buttons}</div>
+  return (
+    <Section headerText="Consultant Type" Icon={Icon}>
+      {buttons}
+    </Section>
+  )
 }
 
 ConsultantSection.propTypes = {
