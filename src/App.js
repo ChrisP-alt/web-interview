@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import ConsultantSection from './components/ConsultantSection'
+import NotesSection from './components/NotesSection'
 
 import logo from './logo.png'
 import { API_ENDPOINT } from './config'
@@ -13,10 +14,12 @@ class App extends Component {
 
     this.state = {
       userId: 1,
-      selectedConsultantType: 'gp',
       availableSlots: [],
+      selectedConsultantType: 'gp',
+      notes: '',
     }
     this.selectConsultantType = this.selectConsultantType.bind(this)
+    this.handleNotesChange = this.handleNotesChange.bind(this)
   }
 
   componentDidMount() {
@@ -32,6 +35,10 @@ class App extends Component {
 
   selectConsultantType(type) {
     this.setState({ selectedConsultantType: type })
+  }
+
+  handleNotesChange(event) {
+    this.setState({ notes: event.target.value })
   }
 
   render() {
@@ -74,10 +81,10 @@ class App extends Component {
               </li>
             ))}
           </div>
-          <div>
-            <strong>Notes</strong>
-            <textarea />
-          </div>
+          <NotesSection
+            handleNotesChange={this.handleNotesChange}
+            notes={this.state.notes}
+          />
           <div>
             <div
               className="button"
