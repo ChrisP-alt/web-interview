@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  button {
+    flex-shrink: 0;
+    margin-bottom: 0.5rem;
+    width: 7.25rem;
+  }
+};

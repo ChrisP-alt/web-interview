@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import Title from './components/Title'
 import User from './components/User'
 import ConsultantSection from './components/ConsultantSection'
+import DateTimeSection from './components/DateTimeSection'
 import NotesSection from './components/NotesSection'
 import { getUser, getAvailableSlots } from './api/apiUtils'
 
@@ -19,9 +20,11 @@ class App extends Component {
       user: null,
       availableSlots: [],
       selectedConsultantType: 'gp',
+      selectedAppointment: null,
       notes: '',
     }
     this.selectConsultantType = this.selectConsultantType.bind(this)
+    this.selectAppointment = this.selectAppointment.bind(this)
     this.handleNotesChange = this.handleNotesChange.bind(this)
   }
 
@@ -43,30 +46,40 @@ class App extends Component {
   }
 
   selectConsultantType(type) {
-    this.setState({ selectedConsultantType: type })
+    // reset the selectedAppointment if it doesn't match type
+    if (
+      this.state.selectedAppointment &&
+      this.state.selectedAppointment.consultantType.includes(type)
+    ) {
+      this.setState({ selectedConsultantType: type })
+    } else {
+      this.setState({
+        selectedAppointment: null,
+        selectedConsultantType: type,
+      })
+    }
+  }
+
+  selectAppointment(appointmentId) {
+    const appointment = this.state.availableSlots.find(
+      slot => slot.id === appointmentId
+    )
+    this.setState({ selectedAppointment: appointment })
   }
 
   handleNotesChange(event) {
     this.setState({ notes: event.target.value })
   }
 
+  getFilteredSlots() {
+    const { availableSlots, selectedConsultantType } = this.state
+    return availableSlots.filter(availableSlot =>
+      availableSlot['consultantType'].includes(selectedConsultantType)
+    )
+  }
+
   render() {
-    // calculate matching slots
-    let slots = []
-    for (let i = 0; i < this.state.availableSlots.length; i++) {
-      for (
-        let j = 0;
-        j < this.state.availableSlots[i]['consultantType'].length;
-        j++
-      ) {
-        if (
-          this.state.availableSlots[i]['consultantType'][j] ===
-          this.state.selectedConsultantType
-        ) {
-          slots.push(this.state.availableSlots[i])
-        }
-      }
-    }
+    const slots = this.getFilteredSlots()
 
     return (
       <div className="app">
@@ -77,20 +90,10 @@ class App extends Component {
           <Title />
           <User user={this.state.user} />
           <ConsultantSection selectConsultantType={this.selectConsultantType} />
-          <div>
-            <strong>Date & Time</strong>
-            {slots.map(slot => (
-              <li
-                className="appointment-button"
-                key={slot.id}
-                onClick={() => {
-                  this.setState({ selectedAppointment: slot })
-                }}
-              >
-                {slot.time}
-              </li>
-            ))}
-          </div>
+          <DateTimeSection
+            appointments={slots}
+            selectAppointment={this.selectAppointment}
+          />
           <NotesSection
             handleNotesChange={this.handleNotesChange}
             notes={this.state.notes}
