@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConsultantSection component renders correctly 1`] = `
+<Section
+  Icon={[Function]}
+  headerText="Consultant Type"
+>
+  <button
+    className="buttonSelected"
+    key="gp"
+    onClick={[Function]}
+    type="button"
+  >
+    GP
+  </button>
+  <button
+    className="button"
+    key="therapist"
+    onClick={[Function]}
+    type="button"
+  >
+    Therapist
+  </button>
+  <button
+    className="button"
+    key="physio"
+    onClick={[Function]}
+    type="button"
+  >
+    Physio
+  </button>
+  <button
+    className="button"
+    key="specialist"
+    onClick={[Function]}
+    type="button"
+  >
+    Specialist
+  </button>
+</Section>
+`;

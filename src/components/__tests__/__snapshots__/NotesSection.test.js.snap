@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotesSection component renders correctly with no notes 1`] = `
+<Section
+  Icon={[Function]}
+  headerText="Notes"
+>
+  <textarea
+    className="textArea"
+    onChange={[MockFunction]}
+    placeholder="Describe your symptoms"
+    rows={6}
+    value=""
+  />
+</Section>
+`;

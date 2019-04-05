@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Section component renders correctly 1`] = `
+<div>
+  <div
+    className="header"
+  >
+    <ReactComponent />
+    <h2>
+      Section Header
+    </h2>
+  </div>
+  <div
+    className="content"
+  >
+    <div
+      className="child"
+    />
+  </div>
+</div>
+`;

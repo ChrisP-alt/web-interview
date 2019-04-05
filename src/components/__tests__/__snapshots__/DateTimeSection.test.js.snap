@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateTimeSection component renders correctly 1`] = `
+<Section
+  Icon={[Function]}
+  headerText="Date & Time"
+>
+  <div
+    className="wrapper"
+  >
+    <button
+      className="buttonSelected"
+      key="1"
+      onClick={[Function]}
+      type="button"
+    >
+      27/11 10:11
+    </button>
+    <button
+      className="button"
+      key="2"
+      onClick={[Function]}
+      type="button"
+    >
+      01/12 14:16
+    </button>
+    <button
+      className="button"
+      key="3"
+      onClick={[Function]}
+      type="button"
+    >
+      08/10 17:17
+    </button>
+  </div>
+</Section>
+`;

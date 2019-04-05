@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubmitButton component renders correctly 1`] = `
+<div>
+  <button
+    className="button"
+    onClick={[MockFunction]}
+    type="button"
+  >
+    Book
+  </button>
+</div>
+`;
