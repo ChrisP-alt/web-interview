@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders correctly 1`] = `
+<div
+  className="app"
+>
+  <div
+    className="appHeader"
+  >
+    <img
+      alt="Babylon Health"
+      src="logo.png"
+    />
+  </div>
+  <div>
+    <NewAppointment />
+  </div>
+</div>
+`;

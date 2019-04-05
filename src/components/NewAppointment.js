@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 
-import Title from './components/Title'
-import User from './components/User'
-import ConsultantSection from './components/ConsultantSection'
-import DateTimeSection from './components/DateTimeSection'
-import NotesSection from './components/NotesSection'
-import SubmitButton from './components/SubmitButton'
-import { getUser, getAvailableSlots, postAppointment } from './api/apiUtils'
+import Title from './Title'
+import User from './User'
+import ConsultantSection from './ConsultantSection'
+import DateTimeSection from './DateTimeSection'
+import NotesSection from './NotesSection'
+import SubmitButton from './SubmitButton'
+import { getUser, getAvailableSlots, postAppointment } from '../api/apiUtils'
 
-import logo from './logo.png'
+import styles from '../styles/components/newAppointment.module.scss'
 
-import './App.scss'
-
-class App extends Component {
+class NewAppointment extends Component {
   constructor(props) {
     super(props)
 
@@ -120,31 +118,26 @@ class App extends Component {
     } = this.state
 
     return (
-      <div className="app">
-        <div className="app-header">
-          <img src={logo} className="app-logo" alt="Babylon Health" />
-        </div>
-        <div style={{ maxWidth: 600, margin: '24px auto' }}>
-          <Title />
-          <User user={user} />
-          <ConsultantSection
-            selectConsultantType={this.selectConsultantType}
-            selectedConsultantType={selectedConsultantType}
-          />
-          <DateTimeSection
-            appointments={slots}
-            selectAppointment={this.selectAppointment}
-            selectedAppointment={selectedAppointment}
-          />
-          <NotesSection
-            handleNotesChange={this.handleNotesChange}
-            notes={notes}
-          />
-          <SubmitButton onClick={this.submitSelectedAppointment} />
-        </div>
+      <div className={styles.wrapper}>
+        <Title />
+        <User user={user} />
+        <ConsultantSection
+          selectConsultantType={this.selectConsultantType}
+          selectedConsultantType={selectedConsultantType}
+        />
+        <DateTimeSection
+          appointments={slots}
+          selectAppointment={this.selectAppointment}
+          selectedAppointment={selectedAppointment}
+        />
+        <NotesSection
+          handleNotesChange={this.handleNotesChange}
+          notes={notes}
+        />
+        <SubmitButton onClick={this.submitSelectedAppointment} />
       </div>
     )
   }
 }
 
-export default App
+export default NewAppointment
