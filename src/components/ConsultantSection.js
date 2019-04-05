@@ -29,7 +29,7 @@ const ConsultantSection = ({
 
   return (
     <Section headerText="Consultant Type" Icon={Icon}>
-      {buttons}
+      <div className={styles.wrapper}>{buttons}</div>
     </Section>
   )
 }

@@ -1,5 +1,10 @@
 @import '../mixins';
 
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+};
+
 .button {
   @include button-primary;
 
