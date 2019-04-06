@@ -11,21 +11,30 @@ const DateTimeSection = ({
   selectAppointment,
   selectedAppointment,
 }) => {
-  const buttons = appointments.map(appointment => {
-    const isSelected =
-      selectedAppointment && selectedAppointment.id === appointment.id
-    const buttonClass = isSelected ? styles.buttonSelected : styles.button
-    return (
-      <button
-        className={buttonClass}
-        key={appointment.id}
-        onClick={() => selectAppointment(appointment.id)}
-        type="button"
-      >
-        {moment(appointment.time).format('DD/MM HH:mm')}
-      </button>
-    )
-  })
+  const buttons = appointments
+    .sort((a, b) => {
+      if (a.time < b.time) {
+        return -1
+      } else if (b.time > a.time) {
+        return 1
+      }
+      return 0
+    })
+    .map(appointment => {
+      const isSelected =
+        selectedAppointment && selectedAppointment.id === appointment.id
+      const buttonClass = isSelected ? styles.buttonSelected : styles.button
+      return (
+        <button
+          className={buttonClass}
+          key={appointment.id}
+          onClick={() => selectAppointment(appointment.id)}
+          type="button"
+        >
+          {moment(appointment.time).format('DD/MM HH:mm')}
+        </button>
+      )
+    })
   return (
     <Section headerText="Date & Time" Icon={Icon}>
       <div className={styles.wrapper}>{buttons}</div>
