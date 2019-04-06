@@ -1,3 +1,5 @@
+*Please find my notes here: [ChrisP_Notes.md](ChrisP_Notes.md)
+
 # Babylon Web technical recruitment test
 
 Thanks for taking the time to complete our frontend coding test! You can start with forking this repository and off you go.
